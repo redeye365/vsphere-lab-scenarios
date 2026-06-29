@@ -34,7 +34,7 @@
     "domain-controller"
   ],
   "certRelevance": [
-    "VCP-VVF"
+    "VCP-VVF-Admin"
   ],
   "learningObjectives": [
     "Correlate a vCenter host disconnection with DNS misconfiguration",
@@ -42,6 +42,6 @@
     "Correct missing or incorrect A and PTR records on a DNS server",
     "Reconnect a disconnected ESXi host in vCenter after DNS is repaired"
   ],
-  "author": "Jon \u2014 CloudITBlog.com",
+  "author": "Jon — CloudITBlog.com",
   "created": "2026-06-26"
 }

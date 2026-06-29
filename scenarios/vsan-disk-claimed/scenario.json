@@ -1,6 +1,6 @@
 {
   "id": "vsan-disk-claimed",
-  "name": "vSAN Can't Claim Disks \u2014 Already Formatted",
+  "name": "vSAN Can't Claim Disks — Already Formatted",
   "description": "vSAN cluster configuration is failing because the disks on the nested hosts were previously formatted with VMFS and vSAN can't claim them.",
   "difficulty": "medium",
   "examObjectives": [
@@ -26,7 +26,7 @@
     "Check the disk status on the affected hosts in vCenter. Go to host configuration, storage, and look at the disk groups. What does vSAN report about the disks?",
     "Look at the disks in the storage adapter view. Are any of them showing as having existing partitions or file systems?",
     "vSAN requires disks to be completely empty before it can claim them. If a disk has an existing VMFS datastore or partition table, vSAN will refuse to use it.",
-    "You need to remove the existing partitions from the affected disks. This can be done via esxcli storage core device partition show on the host, then using partedUtil to clear the partition table. This is destructive \u2014 make sure you have the right disk identified before proceeding.",
+    "You need to remove the existing partitions from the affected disks. This can be done via esxcli storage core device partition show on the host, then using partedUtil to clear the partition table. This is destructive — make sure you have the right disk identified before proceeding.",
     "Run partedUtil mklabel on the affected disks to clear the partition table, then retry the vSAN disk claim. The disks should now be available for vSAN to use."
   ],
   "labRequirements": [
@@ -35,8 +35,8 @@
     "vsan"
   ],
   "certRelevance": [
-    "VCP-VVF",
-    "VCAP-DCV"
+    "VCP-VVF-Admin",
+    "VCAP-VCF-Storage"
   ],
   "learningObjectives": [
     "Diagnose why vSAN refuses to claim disks that carry existing partition tables",
@@ -44,6 +44,6 @@
     "Safely clear existing VMFS or MBR partition tables using partedUtil",
     "Confirm successful vSAN disk claim after partition table removal"
   ],
-  "author": "Jon \u2014 CloudITBlog.com",
+  "author": "Jon — CloudITBlog.com",
   "created": "2026-06-26"
 }
