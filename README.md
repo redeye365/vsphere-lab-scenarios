@@ -2,8 +2,6 @@
 
 Community-contributed scenario library for [vsphere-lab-wizard](https://github.com/redeye365/vsphere-lab-wizard).
 
-Requires vsphere-lab-wizard: **[github.com/redeye365/vsphere-lab-wizard](https://github.com/redeye365/vsphere-lab-wizard)**
-
 Each scenario is a pre-built lab fault that a vSphere engineer must diagnose and fix. When loaded via the Admin panel the lab automatically reverts to a saved vCenter snapshot — the troubleshooter sees only a support ticket, investigates the live environment, and fixes it for real. No walkthroughs, no safety net.
 
 ---
@@ -40,9 +38,7 @@ Copy any `.labscenario` files you want into your wizard's import flow, or use th
 
 ## Starter scenarios
 
-22 scenarios ship with vsphere-lab-wizard. They are reproduced here as a baseline and reference for contributors.
-
-### vSphere / vCenter
+Ten scenarios ship with vsphere-lab-wizard. They are reproduced here as a baseline and reference for contributors.
 
 | ID | Name | Difficulty | Topics | Requires |
 |----|------|-----------|--------|---------|
@@ -56,28 +52,6 @@ Copy any `.labscenario` files you want into your wizard's import flow, or use th
 | `dvs-profile-custom` | DVS Teaming Policy Set to Custom | Medium | vsphere-networking, dvs | DVS, 2+ nested hosts |
 | `monitor-allow-legacy-cpu` | monitor.allowLegacyCPU Missing | Easy | esxi-config, vm-compatibility | 1+ nested host, legacy CPU VM |
 | `local-datastore-missing` | Local Datastore Missing Before vSAN | Hard | vsan, esxi-storage | vSAN, 3+ nested hosts |
-| `vm-snapshot-consolidation` | VM Won't Power On — Snapshot Issue | Easy | vSphere, Storage, Snapshots | vCenter, nested hosts |
-| `host-disconnected-vcenter` | ESXi Host Disconnected from vCenter | Easy | vSphere, DNS, Networking | vCenter, DC, nested hosts |
-| `vmotion-failing` | vMotion Failing Between Hosts | Easy | vSphere, Networking, vMotion | vCenter, 2+ nested hosts |
-| `ha-admission-control` | HA Not Protecting VMs — Admission Control Misconfigured | Medium | vSphere, HA, Cluster | vCenter, 3+ nested hosts |
-| `vsan-disk-claimed` | vSAN Can't Claim Disks — Already Formatted | Medium | vSAN, Storage, Cluster | vCenter, vSAN, 3+ nested hosts |
-| `storage-all-paths-down` | Datastore Inaccessible — All Paths Down | Hard | Storage, Networking, VMFS | vCenter, vSAN, 3+ nested hosts |
-
-### NSX
-
-| ID | Name | Difficulty | Topics | Requires |
-|----|------|-----------|--------|---------|
-| `nsx-t0-uplink-wrong` | VMs Can't Reach Internet — NSX T0 Uplink Misconfigured | Medium | NSX, Routing, T0, VyOS | NSX-T, VyOS, nested hosts |
-| `nsx-dfw-blocking` | Application Servers Can't Communicate — DFW Rule Too Restrictive | Medium | NSX, DFW, Security | NSX-T, DFW, nested hosts |
-| `nsx-edge-transport-zone` | NSX Edge Node Not Joining Transport Zone | Hard | NSX, Edge, TEP, Transport Zone | NSX-T, Edge node, nested hosts |
-
-### VCF
-
-| ID | Name | Difficulty | Topics | Requires |
-|----|------|-----------|--------|---------|
-| `vcf-ssh-config-corruption` | VCF Bring-up: SSH Key Validation Failing for All Hosts | Hard | VCF, Bring-up, SSH, SDDC Manager | 4+ nested hosts, SDDC Manager |
-| `vcf-ntp-drift` | VCF Bring-up: NTP Validation Failing | Hard | VCF, Bring-up, NTP, SDDC Manager | 4+ nested hosts, SDDC Manager, DC |
-| `vcf-dns-ptr-missing` | VCF Bring-up: Host Reported Unresponsive — DNS PTR Record Missing | Hard | VCF, Bring-up, DNS, SDDC Manager | 4+ nested hosts, SDDC Manager, DC |
 
 ---
 
@@ -138,6 +112,8 @@ scenarios/
 | `description` | yes | One sentence. Describes the fault, not the symptom. Shown in the library card. |
 | `difficulty` | yes | `easy` / `medium` / `hard` — see calibration notes below |
 | `examObjectives` | no | VCP/VCAP objectives this fault covers. Helps learners map study material. |
+| `certRelevance` | yes | Array of current Broadcom cert IDs this scenario maps to (see values below). Every scenario must have at least one. |
+| `learningObjectives` | yes | Array of 2–4 short strings describing what the learner practises. Shown on the scenario card. |
 | `topics` | yes | Kebab-case tags. Used for filtering in the library. |
 | `author` | yes | Your GitHub handle or `"vSphere Lab Wizard starter library"` |
 | `created` | yes | ISO date `YYYY-MM-DD` |
@@ -148,6 +124,27 @@ scenarios/
 | `verifyScript` | yes | Filename of the accompanying `.ps1` |
 | `fixSteps` | yes | Array of strings. Step 1 onwards. Used on the debrief screen. |
 | `hints` | yes | Exactly 5 strings, progressive from broad to exact. |
+
+#### certRelevance values
+
+Use only these exact strings (current Broadcom certs as of June 2026):
+
+| Value | Certification |
+|-------|--------------|
+| `VCP-VVF` | VMware vSphere Foundation Administrator (replaces retired VCP-DCV) |
+| `VCP-NV` | Network Virtualization / NSX |
+| `VCAP-DCV` | Advanced Data Center Virtualization Design |
+| `VCAP-NV` | Advanced Network Virtualization Design |
+| `VCP-VCF-Admin` | VCF Administrator |
+| `VCP-VCF-Architect` | VCF Architect |
+
+Assignment guidance:
+- Basic vSphere / HA / DRS / vMotion / vSAN → `VCP-VVF`; advanced storage/cluster design → add `VCAP-DCV`
+- NSX / DFW / T0/T1 / BGP / overlay → `VCP-NV`; design-focused → add `VCAP-NV`
+- VCF / SDDC Manager / Cloud Builder → `VCP-VCF-Admin`; architecture-focused → add `VCP-VCF-Architect`
+- Multi-component scenarios → all relevant certs
+
+---
 
 #### Difficulty calibration
 
