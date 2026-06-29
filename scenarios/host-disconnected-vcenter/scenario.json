@@ -42,6 +42,6 @@
     "Correct missing or incorrect A and PTR records on a DNS server",
     "Reconnect a disconnected ESXi host in vCenter after DNS is repaired"
   ],
-  "author": "Jon — CloudITBlog.com",
+  "author": "Jon \u2014 CloudITBlog.com",
   "created": "2026-06-26"
 }

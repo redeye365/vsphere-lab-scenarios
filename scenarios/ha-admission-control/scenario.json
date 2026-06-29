@@ -1,6 +1,6 @@
 {
   "id": "ha-admission-control",
-  "name": "HA Not Protecting VMs — Admission Control Misconfigured",
+  "name": "HA Not Protecting VMs \u2014 Admission Control Misconfigured",
   "description": "vSphere HA is enabled but VMs are showing as unprotected. Admission control policy is too restrictive for the cluster size.",
   "difficulty": "medium",
   "examObjectives": [
@@ -42,6 +42,6 @@
     "Adjust admission control policy to match real-world cluster utilisation",
     "Verify HA protection status for all VMs after a configuration change"
   ],
-  "author": "Jon — CloudITBlog.com",
+  "author": "Jon \u2014 CloudITBlog.com",
   "created": "2026-06-26"
 }

@@ -1,6 +1,6 @@
 {
   "id": "storage-all-paths-down",
-  "name": "Datastore Inaccessible — All Paths Down",
+  "name": "Datastore Inaccessible \u2014 All Paths Down",
   "description": "A shared datastore is showing as inaccessible on all hosts. Storage network VLAN misconfiguration has caused all paths to go down simultaneously.",
   "difficulty": "hard",
   "examObjectives": [
@@ -13,7 +13,7 @@
     "vSAN",
     "VMFS"
   ],
-  "customerScenario": "We've got a critical alert — one of our datastores has gone inaccessible on all hosts at the same time. VMs are showing as invalid and we can't do anything with them. This is a production system and we need it back urgently.",
+  "customerScenario": "We've got a critical alert \u2014 one of our datastores has gone inaccessible on all hosts at the same time. VMs are showing as invalid and we can't do anything with them. This is a production system and we need it back urgently.",
   "customerFollowUp": "There was some network maintenance last night. The team said they just updated some switch firmware and didn't change any configuration. But this started happening first thing this morning.",
   "snapshotName": "",
   "verifyScript": "verify-storage-all-paths-down.ps1",
@@ -46,6 +46,6 @@
     "Identify how a switch firmware update can silently drop VLAN trunk entries",
     "Restore datastore access by adding the storage VLAN back to the physical switch trunk"
   ],
-  "author": "Jon — CloudITBlog.com",
+  "author": "Jon \u2014 CloudITBlog.com",
   "created": "2026-06-26"
 }
